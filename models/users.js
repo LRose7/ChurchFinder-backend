@@ -17,26 +17,26 @@ module.exports = function(sequelize, DataTypes) {
     },
     Email: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
       unique: true
     },
     Username: {
       type: DataTypes.STRING(255),
-      allowNull: true,
+      allowNull: false,
       unique: true
     },
     Password: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: false
     },
     Admin: {
       type: DataTypes.INTEGER(1),
-      allowNull: true,
+      allowNull: false,
       defaultValue: '0'
     },
     Deleted: {
       type: DataTypes.INTEGER(1),
-      allowNull: true,
+      allowNull: false,
       defaultValue: '0'
     },
     createdAt: {

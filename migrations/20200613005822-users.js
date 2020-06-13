@@ -28,22 +28,27 @@ module.exports = {
      },
      Email: {
        type: Sequelize.STRING,
-       unique: true
+       unique: true,
+       allowNull: false
      },
      Username: {
        type: Sequelize.STRING, 
-       unique: true
+       unique: true,
+       allowNull: false
      },
      Password: {
        type: Sequelize.STRING,
+       allowNull: false
      },
      Admin: {
        type: Sequelize.BOOLEAN,
-       defaultValue: false
+       defaultValue: false,
+       allowNull: false
      },
      Deleted: {
        type: Sequelize.BOOLEAN,
-       defaultValue: false
+       defaultValue: false,
+       allowNull: false
      },
      createdAt: {
        type: Sequelize.DATE,
@@ -65,6 +70,6 @@ module.exports = {
       Example:
        return queryInterface.dropTable('users');
     */
-  
+   
   }
 };
