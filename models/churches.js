@@ -1,34 +1,34 @@
-/* jshint indent: 2 */
-
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('churches', {
-    Id: {
-      type: DataTypes.INTEGER,
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const churches = sequelize.define('churches', {
+    id: {
       allowNull: false,
-      primaryKey: true
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
     },
     Name: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     Description: {
-      type: "BLOB",
-      allowNull: true
+      type: DataTypes.BLOB,
+      allowNull: false
     },
     Mailing_One: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     Mailing_Two: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+      type: DataTypes.STRING,
+      allowNull: false
     },
     City: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     State: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     PostalCode: {
@@ -36,30 +36,23 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     Denomination: {
-      type: DataTypes.STRING(255),
-      allowNull: true
+      type: DataTypes.STRING,
+      allowNull: false
     },
     Web_URL: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
+      type: DataTypes.STRING,  
+    },    
     Latitude: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 8),
       allowNull: false
     },
     Longitude: {
-      type: DataTypes.DECIMAL,
-      allowNull: false
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.DECIMAL(11, 8),
       allowNull: false
     }
-  }, {
-    tableName: 'churches'
-  });
+  }, {});
+  churches.associate = function(models) {
+    // associations can be defined here
+  };
+  return churches;
 };
