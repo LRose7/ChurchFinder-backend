@@ -1,53 +1,45 @@
-/* jshint indent: 2 */
-
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('users', {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const users = sequelize.define('users', {
     UserId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      autoIncrement: true,
       primaryKey: true
     },
     FirstName: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     LastName: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
-    Email: {
-      type: DataTypes.STRING(255),
+    Email: { 
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
     Username: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
     Password: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false
     },
     Admin: {
-      type: DataTypes.INTEGER(1),
-      allowNull: false,
-      defaultValue: '0'
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     Deleted: {
-      type: DataTypes.INTEGER(1),
-      allowNull: false,
-      defaultValue: '0'
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     }
-  }, {
-    tableName: 'users'
-  });
+  }, {});
+  users.associate = function(models) {
+    // associations can be defined here
+  };
+  return users;
 };
