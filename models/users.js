@@ -31,11 +31,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     Admin: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: false
     },
     Deleted: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      defaultValue: false
     }
   }, {});
   users.associate = function(models) {
