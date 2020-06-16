@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-const axios = require('axios').default;
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-axios.post('/signup', function(req, res, next) {
+router.post('/signup', function(req, res, next) {
   models.users
     .findOrCreate({
       where: {
