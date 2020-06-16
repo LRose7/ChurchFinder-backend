@@ -1,22 +1,22 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-var authService = require('../services/auth');
+const axios = require('axios').default;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/signup', function(req, res, next) {
+axios.post('/signup', function(req, res, next) {
   models.users
     .findOrCreate({
       where: {
         Username: req.body.username
       },
       defaults: {
-        FirstName: req.body.firstName,
-        LastName: req.body.lastName,
+        FirstName: req.body.firstname,
+        LastName: req.body.lastname,
         Email: req.body.email,
         Password: req.body.password
       }
