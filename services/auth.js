@@ -24,6 +24,11 @@ var authService = {
       console.log(err);
       return null;
     }
+  },
+  hashPassword: function(plainTextPassword) {
+    let salt = bcrypt.genSaltSync(10);
+    let hash = bcrypt.hashSync(plainTextPassword, salt);
+    return hash;
   }
 }
 

@@ -19,7 +19,7 @@ router.post('/signup', function(req, res, next) {
         FirstName: req.body.firstname,
         LastName: req.body.lastname,
         Email: req.body.email,
-        Password: req.body.password
+        Password: authService.hashPassword(req.body.password)
       }
     })
     .spread(function(result, created) {
