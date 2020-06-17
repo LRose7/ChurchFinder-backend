@@ -10,9 +10,9 @@
                     "field": "id",
                     "seqType": "Sequelize.INTEGER"
                 },
-                "ChurchName": {
+                "Name": {
                     "allowNull": false,
-                    "field": "ChurchName",
+                    "field": "Name",
                     "seqType": "Sequelize.STRING"
                 },
                 "Description": {
@@ -144,5 +144,5 @@
             "indexes": []
         }
     },
-    "revision": 3
+    "revision": 2
 }
