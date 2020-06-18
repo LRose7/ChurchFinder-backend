@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     Description: {
       type: DataTypes.BLOB,
-      allowNull: false
+      allowNull: true
     },
     Mailing_One: {
       type: DataTypes.STRING,
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     Mailing_Two: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     City: {
       type: DataTypes.STRING,
@@ -37,18 +37,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     Denomination: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     Web_URL: {
-      type: DataTypes.STRING,  
+      type: DataTypes.STRING,
+      allowNull: true  
     },    
     Latitude: {
       type: DataTypes.DECIMAL(10, 8),
-      allowNull: false
+      allowNull: true
     },
     Longitude: {
       type: DataTypes.DECIMAL(11, 8),
-      allowNull: false
+      allowNull: true
     }
   }, {});
   churches.associate = function(models) {
