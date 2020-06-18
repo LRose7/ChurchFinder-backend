@@ -10,13 +10,13 @@
                     "field": "id",
                     "seqType": "Sequelize.INTEGER"
                 },
-                "ChurchName": {
+                "Name": {
                     "allowNull": false,
-                    "field": "ChurchName",
+                    "field": "Name",
                     "seqType": "Sequelize.STRING"
                 },
                 "Description": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "Description",
                     "seqType": "Sequelize.BLOB"
                 },
@@ -26,7 +26,7 @@
                     "seqType": "Sequelize.STRING"
                 },
                 "Mailing_Two": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "Mailing_Two",
                     "seqType": "Sequelize.STRING"
                 },
@@ -46,21 +46,22 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "Denomination": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "Denomination",
                     "seqType": "Sequelize.STRING"
                 },
                 "Web_URL": {
+                    "allowNull": true,
                     "field": "Web_URL",
                     "seqType": "Sequelize.STRING"
                 },
                 "Latitude": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "Latitude",
                     "seqType": "Sequelize.DECIMAL(10, 8)"
                 },
                 "Longitude": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "Longitude",
                     "seqType": "Sequelize.DECIMAL(11, 8)"
                 },
@@ -144,5 +145,5 @@
             "indexes": []
         }
     },
-    "revision": 3
+    "revision": 1
 }
