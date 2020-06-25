@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-var authService = require('../services/auth');
+
 
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
@@ -19,7 +19,9 @@ router.get('/', function(req, res, next) {
                 State: req.body.state,
                 PostalCode: req.body.postalcode,
                 Denomination: req.body.denomination,
-                Web_URL: req.body.web_url
+                Web_URL: req.body.web_url,
+                Longitude: req.body.longitude,
+                Latitude: req.body.latitude
             }
         })
         .spread(function(result, created) {
