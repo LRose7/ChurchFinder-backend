@@ -7,6 +7,15 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
   });
 
+  router.get('/churchlist', async(req, res, next) =>{
+    try {
+        const listofchurches = await models.churches.findAll();
+        res.json(listofchurches);
+    } catch (error) {
+        next(error);
+    }
+});
+
   router.post('/addchurch', function(req, res, next) {
       models.churches
         .findOrCreate({
