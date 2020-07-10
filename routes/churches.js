@@ -29,8 +29,9 @@ router.get('/', function(req, res, next) {
                 PostalCode: req.body.postalcode,
                 Denomination: req.body.denomination,
                 Web_URL: req.body.web_url,
-                Longitude: req.body.longitude,
-                Latitude: req.body.latitude
+                Latitude: req.body.latitude,
+                Longitude: req.body.longitude
+                
             }
         })
         .spread(function(result, created) {
