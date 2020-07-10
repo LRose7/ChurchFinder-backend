@@ -33,9 +33,7 @@ router.post('/signup', function(req, res, next) {
 
 router.post('/login', function (req, res, next) {
   models.users.findOne({
-    where: {
-      Username: req.body.username
-    }
+    where: { Username: req.body.username }
   }).then(user => {
     if (!user) {
       console.log('User not found')
