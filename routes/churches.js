@@ -1,11 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var models = require('../models');
+const express = require('express');
+const router = express.Router();
+const models = require('../models');
+const db = require('../db'); //Brings in the index.js file in the db folder
 
 
 router.get('/', function(req, res, next) {
     res.send('respond with a resource');
   });
+
+//Route to grab all churches from the DB and list them as markers on the map
 
   router.get('/churchlist', async(req, res, next) =>{
     try {
@@ -15,6 +18,21 @@ router.get('/', function(req, res, next) {
         next(error);
     }
 });
+
+// Search Route to query churches in mySQL DB
+
+router.get('/search', async(req, res, next) => {
+    try {
+        let results = await db.all();
+        res.json(results);
+    } catch(error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+
+   });
+
+// Route to add churches into the DB
 
   router.post('/addchurch', function(req, res, next) {
       models.churches
