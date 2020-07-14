@@ -1,13 +1,16 @@
-var express = require('express');
-var router = express.Router();
-var models = require('../models');
+const express = require('express');
+const router = express.Router();
+const models = require('../models');
+const sequelize = require('sequelize');
+const op = sequelize.Op;
 
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     res.send('respond with a resource');
-  });
+});
 
-  router.get('/churchlist', async(req, res, next) =>{
+//Route to grab all churches from the DB and list them as markers on the map
+router.get('/churchlist', async (req, res, next) => {
     try {
         const listofchurches = await models.churches.findAll();
         res.json(listofchurches);
@@ -16,8 +19,41 @@ router.get('/', function(req, res, next) {
     }
 });
 
-  router.post('/addchurch', function(req, res, next) {
-      models.churches
+// Search Route to query churches in mySQL DB by denomination
+router.get('/search/denomination', (req, res, next) => {
+    const denomination = req.query.Denomination;
+    var condition = denomination ? { denomination: { [op.like]: `%${Denomination}%` } } : null;
+
+    models.churches.findAll({ where: condition })
+    .then(data => {
+        res.send(data);
+    })
+    .catch(error=> {
+        res.status(500).send({
+            message: 
+            error.message || 'An error occurred while retrieving a church with that denomination.'
+        });        
+    });
+});
+
+// router.get('/search/denomination/:search', async (req, res, next) => {
+//     try {
+//         let results = await models.churches.findAll(
+//             {where:
+//                  { Denomination: 
+//                      {[op.like]: '%'+ req.params.search + '%'} }});
+//         res.json(results);
+//     } catch (error) {
+//         console.log(error);
+//         res.sendStatus(500);
+//     }
+
+// });
+
+// Route to add churches into the DB
+
+router.post('/addchurch', function (req, res, next) {
+    models.churches
         .findOrCreate({
             where: {
                 Name: req.body.name,
@@ -34,13 +70,13 @@ router.get('/', function(req, res, next) {
                 
             }
         })
-        .spread(function(result, created) {
+        .spread(function (result, created) {
             if (created) {
                 res.send('Church successfully added');
             } else {
                 res.send('This church already exists');
             }
         });
-  });
+});
 
-  module.exports = router;
+module.exports = router;
