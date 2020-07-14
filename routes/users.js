@@ -26,7 +26,10 @@ router.post('/signup', function(req, res, next) {
       if (created) {
         res.send('User successfully created');
       } else {
-        res.send('This user already exists');
+        res.status(200).json({
+          message: 'user already exists', 
+          status: 400
+        });
       }
     });
 });
