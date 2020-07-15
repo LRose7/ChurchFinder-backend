@@ -19,24 +19,6 @@ router.get('/churchlist', async (req, res, next) => {
     }
 });
 
-// Search Route to query churches in mySQL DB by denomination
-// router.get('/search/denomination', (req, res, next) => {
-//     const denomination = req.query.denomination;
-//     console.log (denomination)
-//     var condition = denomination ? { denomination: { [op.like]: `%${Denomination}%` } } : null;
-
-//     models.churches.findAll({ where: condition })
-//     .then(data => {
-//         res.send(data);
-//     })
-//     .catch(error=> {
-//         res.status(500).send({
-//             message: 
-//             error.message || 'An error occurred while retrieving a church with that denomination.'
-//         });        
-//     });
-// });
-
 router.get('/search/denomination/:search', async (req, res, next) => {
     try {
         let results = await models.churches.findAll(
