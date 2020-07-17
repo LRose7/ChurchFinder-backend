@@ -19,6 +19,7 @@ router.get('/churchlist', async (req, res, next) => {
     }
 });
 
+//Route to search churches in database by denomination
 router.get('/search/denomination/:search', async (req, res, next) => {
     try {
         let results = await models.churches.findAll(
@@ -34,7 +35,6 @@ router.get('/search/denomination/:search', async (req, res, next) => {
 });
 
 // Route to add churches into the DB
-
 router.post('/addchurch', function (req, res, next) {
     models.churches
         .findOrCreate({

@@ -3,12 +3,12 @@ var router = express.Router();
 var models = require('../models');
 var authService = require('../services/auth');
 
-
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+
+//User signup route
 router.post('/signup', function(req, res, next) {
   models.users
     .findOrCreate({
@@ -34,6 +34,7 @@ router.post('/signup', function(req, res, next) {
     });
 });
 
+//User secure login route
 router.post('/login', function (req, res, next) {
   models.users.findOne({
     where: { Username: req.body.username }
@@ -56,7 +57,6 @@ router.post('/login', function (req, res, next) {
     }
   });
 });
-
 
 
 module.exports = router;
